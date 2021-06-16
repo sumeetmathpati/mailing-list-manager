@@ -19,13 +19,27 @@ if(isset($_POST['submit'])) {
 		);
 
 		if($query) {
-      // TODO
+			$to=$email;
+			$msg= "Thanks for new Registration.";   
+			$subject="Email verification";
+			$headers .= "MIME-Version: 1.0"."\r\n";
+			$headers .= 'Content-type: text/html; charset=iso-8859-1'."\r\n";
+			$headers .= 'From:MailComics'."\r\n";
+			$ms.="<html></body><div><div>Hello, and thanks for signing up.</div></br></br>";
+			$ms.="<div style='padding-top:8px;'>Please click The following link For verifying and activation of your account</div>
+			<div style='padding-top:10px;'><a href='192.168.0.104/emailverify/email_verification.php?code=$activationcode'>Click Here</a></div>
+			</body></html>";
+
+			mail($to,$subject,$ms,$headers);
+      
+			echo "<script>alert('Registration successful, please verify in the registered Email-Id');</script>";
+			echo "<script>window.location = 'index.php';</script>";
 		} else {
 
 			echo "<script>alert('Data not inserted');</script>";
 		} 
 	} else {
-    
+
 		echo "<script>alert('User Already exists');</script>";
 	} 
 }
