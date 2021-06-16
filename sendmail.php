@@ -187,5 +187,6 @@ while($row = mysqli_fetch_array($result)) {
     } else{
         echo "Email has not sent. <br />";
     }
+    
 }
 ?>

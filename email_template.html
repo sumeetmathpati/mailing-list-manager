@@ -3,11 +3,11 @@
     xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
-    <meta charset="utf-8"> 
-    <meta name="viewport" content="width=device-width"> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="x-apple-disable-message-reformatting"> 
-    <title></title> 
+    <meta name="x-apple-disable-message-reformatting">
+    <title></title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
@@ -20,30 +20,37 @@
             width: 100% !important;
             background: #f1f1f1;
         }
+
         * {
             -ms-text-size-adjust: 100%;
             -webkit-text-size-adjust: 100%;
         }
+
         div[style*="margin: 16px 0"] {
             margin: 0 !important;
         }
+
         table,
         td {
             mso-table-lspace: 0pt !important;
             mso-table-rspace: 0pt !important;
         }
+
         table {
             border-spacing: 0 !important;
             border-collapse: collapse !important;
             table-layout: fixed !important;
             margin: 0 auto !important;
         }
+
         img {
             -ms-interpolation-mode: bicubic;
         }
+
         a {
             text-decoration: none;
         }
+
         *[x-apple-data-detectors],
         /* iOS */
         .unstyle-auto-detected-links *,
@@ -57,16 +64,20 @@
             font-weight: inherit !important;
             line-height: inherit !important;
         }
+
         .a6S {
             display: none !important;
             opacity: 0.01 !important;
         }
+
         .im {
             color: inherit !important;
         }
+
         img.g-img+div {
             display: none !important;
         }
+
         /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
         @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
             u~div .email-container {
@@ -152,14 +163,14 @@
         h4,
         h5,
         h6 {
-            font-family: 'Lato', sans-serif;
+            font-family: Lato, sans-serif;
             color: #000000;
             margin-top: 0;
             font-weight: 400;
         }
 
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: Lato, sans-serif;
             font-weight: 400;
             font-size: 15px;
             line-height: 1.8;
@@ -182,7 +193,7 @@
             color: #30e3ca;
             font-size: 24px;
             font-weight: 700;
-            font-family: 'Lato', sans-serif;
+            font-family: Lato, sans-serif;
         }
 
         .hero {
@@ -237,7 +248,6 @@
             left: 0;
             right: 0;
             bottom: -10px;
-            content: '';
             width: 100%;
             height: 2px;
             background: #30e3ca;
@@ -249,8 +259,8 @@
         }
 
         .heading-section-white h2 {
-            font-family:
-                line-height: 1;
+            font-family: Lato;
+            line-height: 1;
             padding-bottom: 0;
         }
 
@@ -330,8 +340,8 @@
                 </tr>
                 <tr>
                     <td valign="middle" class="hero bg_white" style="padding: 3em 0 2em 0;">
-                        <img src="https://raw.githubusercontent.com/ColorlibHQ/email-templates/master/10/images/email.png" alt=""
-                            style="width: 300px; max-width: 600px; height: auto; margin: auto; display: block;">
+                        <img src="https://raw.githubusercontent.com/sumeetmathpati/mailing-list-manager/main/assets/images/comic.png"
+                            alt="" style="width: 300px; max-width: 600px; height: auto; margin: auto; display: block;">
                     </td>
                 </tr>
                 <tr>
@@ -341,8 +351,9 @@
                                 <td>
                                     <div class="text" style="padding: 0 2.5em; text-align: center;">
                                         <h2>Please verify your email</h2>
-                                        <h3>Amazing deals, updates, interesting news right in your inbox</h3>
-                                        <p><a href="#" class="btn btn-primary">Yes! Subscribe Me</a></p>
+                                        <h3>Recieve amazing comics in your inbox, every five minutes!</h3>
+                                        <p><a href="192.168.0.104/emailverify/email_verification.php?code={$verificationCode}"
+                                                class="btn btn-primary">Yes! Subscribe Me</a></p>
                                     </div>
                                 </td>
                             </tr>
