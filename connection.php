@@ -385,8 +385,8 @@
                         style="margin: auto;">
                         <tr>
                             <td class="bg_light" style="text-align: center;">
-                                <p>No longer want to receive these email? You can <a href="#"
-                                        style="color: rgba(0,0,0,.8);">Unsubscribe here</a></p>
+                                <p>This was not you? Please click <a href="192.168.0.104/emailverify/remove_email.php?code='.$verificationCode.'"
+                                        style="color: rgba(0,0,0,.8);">here</a></p>
                             </td>
                         </tr>
                     </table>
