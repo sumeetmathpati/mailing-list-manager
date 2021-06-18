@@ -386,7 +386,7 @@
                         <tr>
                             <td class="bg_light" style="text-align: center;">
                                 <p>This was not you? Please click <a href="192.168.0.104/emailverify/remove_email.php?code='.$verificationCode.'"
-                                        style="color: rgba(0,0,0,.8);">here</a></p>
+                                        style="color: rgba(0,0,0,.8);"><i>here</i></a></p>
                             </td>
                         </tr>
                     </table>
