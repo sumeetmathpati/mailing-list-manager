@@ -3,21 +3,19 @@ include_once("connection.php");
 
 $result = mysqli_query($con, "SELECT email, activationcode FROM users");
 $imgUrl = getImgUrl();
+$filename = 'comic.png';
+$path = '.';
+$file = $path . "/" . $filename;
+file_put_contents($file,file_get_contents($imgUrl));
 
 while($row = mysqli_fetch_array($result)) {
- 
-    sendMail($row['email'], $row['activationcode'], $imgUrl);
-    
+    sendMailWithAttachment($row['email'], $row['activationcode'], $imgUrl, $file, $filename);
 }
 
-function sendMail($email, $activationcode, $imgUrl) {
-    $to=$email;
-    $msg= "Thanks for new Registration.";   
-    $subject="Email verification";
-    $headers .= "MIME-Version: 1.0"."\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1'."\r\n";
-    $headers .= 'From:MailComics'."\r\n";
-    $ms = '<!DOCTYPE html>
+function sendMailWithAttachment($mailto, $activationcode, $imgUrl, $file, $filename) {
+   
+    $subject = 'New Comic from MailComics';
+    $htmlMsg = '<!DOCTYPE html>
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
         xmlns:o="urn:schemas-microsoft-com:office:office">
     
@@ -379,8 +377,38 @@ function sendMail($email, $activationcode, $imgUrl) {
     </body>
     
     </html>';
-    
-    mail($to,$subject,$ms,$headers);
+
+    $encoded_content = chunk_split(base64_encode(file_get_contents('./comic.png')));
+    $random_hash = md5(date('r', time())); 
+
+    // Headers
+    $headers = "From: no-reply@example.com\r\n";
+    $headers .= "Reply-To: no-reply@example.com\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: multipart/mixed; boundary=\"PHP-mixed-".$random_hash."\"\r\n"; 
+    $headers .= "X-Priority: 3\r\n";
+    $headers .= "X-MSMail-Priority: Normal\r\n";    
+    $headers .= "X-Mailer: PHP/" . phpversion();
+
+    // message
+    $body = "--PHP-mixed-" . $random_hash . "\r\n";
+    $body .= "Content-Type: text/html; charset=\"UTF-8\"\r\n";
+    $body .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
+    $body .= $htmlMsg;
+    $body .= "\r\n\r\n";
+    $body .= "\r\n--PHP-mixed-" . $random_hash . "\r\n\r\n";
+
+    // attachment
+    $body .= "--PHP-mixed-" . $random_hash . "\r\n";
+    $body .= "Content-Type: multipart/mixed; name=\"comic.png\"\r\n";
+    $body .= "Content-Transfer-Encoding: base64\r\n";
+    $body .= "Content-Disposition: attachment; filename=\"comic.png\"\r\n\r\n";
+    $body .= $encoded_content;
+    $body .= "\r\n--PHP-mixed-" . $random_hash . "\r\n\r\n";
+
+    $mailto = "sumeet.mathpati@gmail.com, sumeet221b@gmail.com";
+    mail($mailto, $subject, $body, $headers);
+
 }
 
 function getImgUrl() {
